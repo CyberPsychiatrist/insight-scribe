@@ -8,10 +8,12 @@ import DocumentDetail from './pages/DocumentDetail';
 import Chat from './pages/Chat';
 import Settings from './pages/Settings';
 import Admin from './pages/Admin';
+import { Toaster } from 'sonner';
 
 export default function App() {
   return (
     <Router>
+      <Toaster richColors />
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
