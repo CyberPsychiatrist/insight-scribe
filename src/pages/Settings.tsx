@@ -7,14 +7,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 export default function Settings() {
   return (
     <div>
-      <h1 className='text-lg font-semibold md:text-2xl mb-4'>Settings</h1>
-      <Tabs defaultValue='profile'>
-        <TabsList>
-          <TabsTrigger value='profile'>Profile</TabsTrigger>
-          <TabsTrigger value='organization'>Organization</TabsTrigger>
-          <TabsTrigger value='billing'>Billing</TabsTrigger>
-        </TabsList>
-        <TabsContent value='profile'>
+      <h1 className='text-xl font-semibold md:text-2xl mb-4'>Settings</h1>
+      <Tabs defaultValue='profile' className='w-full'>
+        <div className='overflow-x-auto'>
+          <TabsList className='inline-flex w-full sm:w-auto'>
+            <TabsTrigger value='profile'>Profile</TabsTrigger>
+            <TabsTrigger value='organization'>Organization</TabsTrigger>
+            <TabsTrigger value='billing'>Billing</TabsTrigger>
+          </TabsList>
+        </div>
+        <TabsContent value='profile' className='mt-4'>
           <Card>
             <CardHeader>
               <CardTitle>Profile</CardTitle>
@@ -33,7 +35,7 @@ export default function Settings() {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value='organization'>
+        <TabsContent value='organization' className='mt-4'>
           <Card>
             <CardHeader>
               <CardTitle>Organization</CardTitle>
@@ -48,7 +50,7 @@ export default function Settings() {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value='billing'>
+        <TabsContent value='billing' className='mt-4'>
            <Card>
             <CardHeader>
               <CardTitle>Billing</CardTitle>

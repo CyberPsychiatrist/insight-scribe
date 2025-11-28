@@ -7,11 +7,11 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function Login() {
   return (
-    <div className='flex items-center justify-center min-h-screen bg-background'>
+    <div className='flex items-center justify-center min-h-screen bg-background p-4'>
       <div className='absolute top-4 right-4'>
         <ThemeToggle />
       </div>
-      <Card className='mx-auto max-w-sm'>
+      <Card className='mx-auto max-w-sm w-full'>
         <CardHeader>
           <div className='flex justify-center mb-4'>
              <img src='https://storage.googleapis.com/dala-prod-public-storage/generated-images/03ebbed2-8ce6-43b7-a1d5-e3d7d802c70d/logo-zusldcd-1764310604835.webp' alt='AkiliDocs Logo' className='w-24 h-24' />

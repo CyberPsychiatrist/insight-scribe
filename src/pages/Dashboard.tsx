@@ -24,8 +24,8 @@ const insightIconMap = {
 export default function Dashboard() {
   return (
     <>
-        <h1 className='text-lg font-semibold md:text-2xl'>Dashboard</h1>
-          <div className='grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-2'>
+        <h1 className='text-xl font-semibold md:text-2xl'>Dashboard</h1>
+          <div className='grid gap-4 md:gap-8 grid-cols-1 lg:grid-cols-2'>
             <Card>
               <CardHeader className='flex flex-row items-center justify-between pb-2'>
                 <CardTitle className='text-lg font-medium'>Recent Files</CardTitle>
@@ -39,11 +39,11 @@ export default function Dashboard() {
                           <div className='flex items-center gap-3'>
                             {iconMap[file.type as keyof typeof iconMap]}
                               <div>
-                                  <p className='font-medium'>{file.name}</p>
-                                  <p className='text-sm text-muted-foreground'>{file.date} - {file.size}</p>
+                                  <p className='font-medium text-sm sm:text-base'>{file.name}</p>
+                                  <p className='text-xs sm:text-sm text-muted-foreground'>{file.date} - {file.size}</p>
                               </div>
                           </div>
-                          <Badge variant='outline'>{file.insights} Insights</Badge>
+                          <Badge variant='outline' className='text-xs sm:text-sm'>{file.insights} Insights</Badge>
                       </div>
                     </Link>
                   ))}
@@ -60,9 +60,9 @@ export default function Dashboard() {
                   {mockInsights.map((insight) => (
                      <div key={insight.id} className='flex items-start gap-3 p-2 rounded-lg hover:bg-muted'>
                         {insightIconMap[insight.type as keyof typeof insightIconMap]}
-                        <div>
-                             <p className='font-medium'>{insight.title}</p>
-                             <p className='text-sm text-muted-foreground'>{insight.description}</p>
+                        <div className='flex-1'>
+                             <p className='font-medium text-sm sm:text-base'>{insight.title}</p>
+                             <p className='text-xs sm:text-sm text-muted-foreground'>{insight.description}</p>
                         </div>
                     </div>
                   ))}

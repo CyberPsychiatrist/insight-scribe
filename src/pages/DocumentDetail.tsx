@@ -16,8 +16,8 @@ export default function DocumentDetail() {
 
   return (
     <div>
-        <h1 className='text-lg font-semibold md:text-2xl mb-4'>Document Details: {file.name}</h1>
-        <div className='grid gap-8 md:grid-cols-2'>
+        <h1 className='text-xl font-semibold md:text-2xl mb-4'>Document Details: {file.name}</h1>
+        <div className='grid gap-8 grid-cols-1 md:grid-cols-2'>
             <div>
                 <Card>
                     <CardHeader>

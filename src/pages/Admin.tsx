@@ -12,36 +12,38 @@ const users = [
 export default function Admin() {
   return (
     <div>
-        <h1 className='text-lg font-semibold md:text-2xl mb-4'>Admin Panel</h1>
+        <h1 className='text-xl font-semibold md:text-2xl mb-4'>Admin Panel</h1>
         <Card>
             <CardHeader>
                 <CardTitle>User Management</CardTitle>
             </CardHeader>
             <CardContent>
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Email</TableHead>
-                            <TableHead>Role</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead>Actions</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {users.map(user => (
-                            <TableRow key={user.id}>
-                                <TableCell>{user.name}</TableCell>
-                                <TableCell>{user.email}</TableCell>
-                                <TableCell>{user.role}</TableCell>
-                                <TableCell><Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>{user.status}</Badge></TableCell>
-                                <TableCell>
-                                    <Button variant='outline' size='sm'>Edit</Button>
-                                </TableCell>
+                <div className='overflow-x-auto'>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Name</TableHead>
+                                <TableHead className='hidden sm:table-cell'>Email</TableHead>
+                                <TableHead className='hidden md:table-cell'>Role</TableHead>
+                                <TableHead>Status</TableHead>
+                                <TableHead>Actions</TableHead>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHeader>
+                        <TableBody>
+                            {users.map(user => (
+                                <TableRow key={user.id}>
+                                    <TableCell>{user.name}</TableCell>
+                                    <TableCell className='hidden sm:table-cell'>{user.email}</TableCell>
+                                    <TableCell className='hidden md:table-cell'>{user.role}</TableCell>
+                                    <TableCell><Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>{user.status}</Badge></TableCell>
+                                    <TableCell>
+                                        <Button variant='outline' size='sm'>Edit</Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </CardContent>
         </Card>
     </div>
