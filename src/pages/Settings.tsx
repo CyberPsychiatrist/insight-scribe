@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Check } from 'lucide-react';
+import { Check, CheckCircle } from 'lucide-react';
 
 const plans = [
   {
@@ -46,7 +47,27 @@ const plans = [
   },
 ];
 
+const skillLevels = [
+  {
+    name: 'Beginner',
+    description: 'For those comfortable with Python basics who want to practice python and pandas fundamentals for data analytics.',
+    topics: ['Python Basics', 'Control Flow', 'Data Structures', 'Pandas Essentials'],
+  },
+  {
+    name: 'Intermediate',
+    description: 'For those ready to contribute to more advanced Python & Pandas tools.',
+    topics: ['Functions & Comprehensions', 'Data Structures & Utilities', 'Text and Time Processing', 'Pandas Transformations', 'Advanced Data Handling'],
+  },
+  {
+    name: 'Expert',
+    description: 'For those confident in structuring code, cleaning and transforming data, and building complete analysis solutions.',
+    topics: ['Modular programming', 'Analytics', 'Functions Design', 'Requirement Analysis', 'Data preparation', 'Feature Engineering', 'Data Handling & Cleaning'],
+  },
+];
+
 export default function Settings() {
+  const [selectedSkill, setSelectedSkill] = useState('Beginner');
+
   return (
     <div>
       <h1 className='text-xl font-semibold md:text-2xl mb-4'>Settings</h1>
@@ -56,6 +77,7 @@ export default function Settings() {
             <TabsTrigger value='profile'>Profile</TabsTrigger>
             <TabsTrigger value='organization'>Organization</TabsTrigger>
             <TabsTrigger value='billing'>Billing</TabsTrigger>
+            <TabsTrigger value='skills'>Skill Level</TabsTrigger>
           </TabsList>
         </div>
         <TabsContent value='profile' className='mt-4'>
@@ -122,6 +144,38 @@ export default function Settings() {
                   </Card>
                 ))}
               </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value='skills' className='mt-4'>
+          <Card>
+            <CardHeader>
+              <CardTitle>Select Your Skill Level</CardTitle>
+              <CardDescription>Choose the level that best describes your current abilities.</CardDescription>
+            </CardHeader>
+            <CardContent className='space-y-6'>
+              <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                {skillLevels.map((level) => (
+                  <Card key={level.name} onClick={() => setSelectedSkill(level.name)} className={`flex flex-col cursor-pointer ${selectedSkill === level.name ? 'border-primary' : ''}`}>
+                    <CardHeader>
+                      <CardTitle className='flex items-center justify-between'>
+                        {level.name}
+                        {selectedSkill === level.name && <CheckCircle className='h-6 w-6 text-primary' />}
+                      </CardTitle>
+                      <CardDescription>{level.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent className='flex-grow space-y-4'>
+                      <p className='font-semibold'>TOPICS COVERED</p>
+                      <ul className='space-y-2 list-disc pl-5'>
+                        {level.topics.map((topic) => (
+                          <li key={topic}>{topic}</li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+               <Button>Save Skill Level</Button>
             </CardContent>
           </Card>
         </TabsContent>
